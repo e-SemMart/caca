@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #e3f2fd, #fff8e1);
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+      color: #263238;
+    }
+
+    h2 {
+      color: #0d47a1;
+      margin-bottom: 25px;
+      text-align: center;
+      font-size: 28px;
+      text-shadow: 1px 1px #bbdefb;
+    }
+
+    .info-box, .voucher-box {
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: fadeIn 0.7s ease-in-out;
+      transition: transform 0.2s;
+    }
+
+    .info-box:hover, .voucher-box:hover {
+      transform: scale(1.02);
+    }
+
+    .info-box {
+      background-color: #e3f2fd;
+      border-left: 8px solid #1976d2;
+    }
+
+    .voucher-box {
+      background-color: #fff9c4;
+      border-left: 8px solid #fbc02d;
+    }
+
+    .info-title, .voucher-title {
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+    }
+
+    .info-title {
+      color: #1565c0;
+    }
+
+    .voucher-title {
+      color: #f57f17;
+    }
+
+    .info-title span, .voucher-title span {
+      font-size: 22px;
+      margin-right: 8px;
+    }
+
+    .info-content, .voucher-content {
+      font-size: 15px;
+      color: #37474f;
+    }
+
+    .voucher-content ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .voucher-content li {
+      background: #fffde7;
+      margin: 10px 0;
+      padding: 12px;
+      border-left: 5px solid #ffb300;
+      border-radius: 8px;
+      font-size: 14.5px;
+      box-shadow: 1px 2px 5px rgba(0,0,0,0.05);
+      transition: background 0.3s;
+    }
+
+    .voucher-content li:hover {
+      background: #fff8dc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="konten">
+  <h2>📢 Informasi Penting</h2>
+
+  <div class="info-box">
+    <div class="info-title"><span>🕘</span>Jam Operasional</div>
+    <div class="info-content">Toko buka setiap hari pukul <strong>08.00 - 21.00 WIB</strong></div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-title"><span>🚚</span>Pengiriman Cepat</div>
+    <div class="info-content">Gratis ongkir untuk pembelian minimal <strong>Rp 100.000</strong>. Pengiriman maksimal H+1.</div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-title"><span>💳</span>Metode Pembayaran</div>
+    <div class="info-content">Kami menerima pembayaran via <strong>e-wallet</strong>, <strong>transfer bank</strong>, dan <strong>COD</strong>.</div>
+  </div>
+
+  <div class="voucher-box">
+    <div class="voucher-title"><span>🎟️</span>Voucher Belanja</div>
+    <div class="voucher-content">
+      <ul>
+        <li>🔖 <strong>VOUCHERHEMAT10</strong> - Diskon 10% tanpa minimum belanja</li>
+        <li>🛍️ <strong>GRATISONGKIR</strong> - Bebas ongkir untuk pembelian di atas Rp 50.000</li>
+        <li>💰 <strong>CASHBACK20</strong> - Cashback 20% untuk pengguna baru</li>
+        <li>🎉 <strong>VOUCHERJULI</strong> - Diskon 20% khusus bulan Juli</li>
+        <li>🎈 <strong>BELANJAHEMAT</strong> - Diskon Rp 5.000 setiap pembelian Rp 50.000</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

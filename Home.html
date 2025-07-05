@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Warung Sembako - Flash Sale!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #fefae0;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffb703;
+      padding: 15px 20px;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav {
+      background-color: #fff3cd;
+      padding: 10px 20px;
+      display: flex;
+      gap: 20px;
+      font-weight: bold;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #6c4c27;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #d35400;
+    }
+
+    #cart-count {
+      background-color: #e64a19;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 8px;
+      font-size: 12px;
+      position: absolute;
+      top: -8px;
+      right: -12px;
+    }
+
+    .kategori {
+      display: flex;
+      justify-content: space-around;
+      padding: 20px;
+      background-color: #fef9c3;
+    }
+
+    .kategori-item {
+      text-align: center;
+    }
+
+    .kategori-item img {
+      width: 60px;
+      height: 60px;
+    }
+
+    .flash-sale {
+      padding: 20px;
+      background-color: #ffe5b4;
+    }
+
+    .flash-sale h2 {
+      color: #e67e22;
+      margin-bottom: 10px;
+    }
+
+    .countdown {
+      font-size: 18px;
+      font-weight: bold;
+      color: #d32f2f;
+      margin-bottom: 20px;
+    }
+
+    .produk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .produk {
+      background-color: #ffffff;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .produk img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .produk h4 {
+      margin: 10px 0 5px;
+    }
+
+    .btn-beli {
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .btn-beli:hover {
+      background-color: #e64a19;
+    }
+
+    .keranjang-modal {
+      background-color: #fff8dc;
+      padding: 20px;
+      border: 1px solid #ddd;
+      max-width: 500px;
+      margin: 20px auto;
+      border-radius: 8px;
+    }
+
+    .keranjang-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 6px;
+    }
+
+    .keranjang-item input {
+      width: 50px;
+      padding: 4px;
+      text-align: center;
+    }
+
+    .checkout-btn {
+      margin-top: 15px;
+      padding: 10px 15px;
+      background-color: #388e3c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      float: right;
+    }
+
+    .checkout-btn:hover {
+      background-color: #2e7d32;
+    }
+
+    footer {
+      background-color: #ffcc80;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      color: #5d4037;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Warung Sembako Flash Sale</header>
+
+  <section class="kategori">
+    <div class="kategori-item">
+      <img src="https://img.icons8.com/color/96/rice-bowl.png" alt="Beras"/>
+      <div>Beras</div>
+    </div>
+    <div class="kategori-item">
+      <img src="https://img.icons8.com/color/96/oil-industry.png" alt="Minyak"/>
+      <div>Minyak</div>
+    </div>
+    <div class="kategori-item">
+      <img src="https://img.icons8.com/color/96/sugar-cube.png" alt="Gula"/>
+      <div>Gula</div>
+    </div>
+    <div class="kategori-item">
+      <img src="https://img.icons8.com/color/96/milk-bottle.png" alt="Susu"/>
+      <div>Susu</div>
+    </div>
+  </section>
+
+  <section class="flash-sale">
+    <h2>⚡ Flash Sale Hari Ini!</h2>
+    <div class="countdown" id="timer">Berakhir dalam: 2 hari </div>
+    <div class="produk-grid">
+      <div class="produk">
+        <img src="img-Beras.jpg" alt="Beras"/>
+        <h4>Beras Basmati</h4>
+        <p><del>Rp 455.000</del> <strong>Rp 400.000</strong></p>
+        <button class="btn-beli" onclick="addToCart('Beras Basmati', 400000)">+ Beli</button>
+      </div>
+      <div class="produk">
+        <img src="img-Cannola-oil.jpg" alt="Minyak"/>
+        <h4>Minyak Goreng </h4>
+        <p><del>Rp 249.000</del> <strong>Rp 220.000</strong></p>
+        <button class="btn-beli" onclick="addToCart('Minyak Goreng', 220000)">+ Beli</button>
+      </div>
+      <div class="produk">
+        <img src="img-Detergen.jpg" alt="Detergen"/>
+        <h4>Detergen </h4>
+        <p><del>Rp 59.000</del> <strong>Rp 45.000</strong></p>
+        <button class="btn-beli" onclick="addToCart('Detergen', 45000)">+ Beli</button>
+      </div>
+      <div class="produk">
+        <img src="img-Pasta-gigi.jpg" alt="Pasta gigi"/>
+        <h4>Pasta Gigi </h4>
+        <p><del>Rp 42.000</del> <strong>Rp 45.000</strong></p>
+        <button class="btn-beli" onclick="addToCart('pasta gigi', 40000)">+ Beli</button>
+      </div>
+      <div class="produk">
+        <img src="img-Shampo.jpg" alt="shampo"/>
+        <h4>Shampo </h4>
+        <p><del>Rp 90.000</del> <strong>Rp 82.000</strong></p>
+        <button class="btn-beli" onclick="addToCart('Shampo', 82000)">+ Beli</button>
+      </div>
+      <div class="produk">
+        <img src="img-tisu.jpg" alt="tisu"/>
+        <h4>Tisu </h4>
+        <p><del>Rp 20.000</del> <strong>Rp 17.000</strong></p>
+        <button class="btn-beli" onclick="addToCart('Tisu', 17000)">+ Beli</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="keranjang" class="keranjang-modal" style="display:none;"></div>
+
+  <footer>
+    &copy; 2025 Warung Sembako. Hemat, Cepat, Terpercaya.
+  </footer>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem('keranjang')) || [];
+
+    function addToCart(nama, harga) {
+      const index = cart.findIndex(item => item.nama === nama);
+      if (index > -1) {
+        cart[index].jumlah++;
+      } else {
+        cart.push({ nama, harga, jumlah: 1 });
+      }
+      localStorage.setItem('keranjang', JSON.stringify(cart));
+      updateCartCount();
+      alert(nama + " ditambahkan ke keranjang!");
+    }
+
+    function updateCartCount() {
+      document.getElementById("cart-count").textContent = cart.reduce((acc, item) => acc + item.jumlah, 0);
+    }
+
+    function showCart() {
+      const el = document.getElementById("keranjang");
+      if (cart.length === 0) {
+        el.innerHTML = "<p>Keranjang kamu kosong.</p>";
+      } else {
+        let html = "";
+        let total = 0;
+        cart.forEach((item, i) => {
+          const subtotal = item.harga * item.jumlah;
+          total += subtotal;
+          html += `
+            <div class="keranjang-item">
+              <div>${item.nama} - Rp ${item.harga.toLocaleString()}</div>
+              <div>
+                <input type="number" min="1" value="${item.jumlah}" onchange="updateQty(${i}, this.value)" />
+                <button onclick="hapusItem(${i})">❌</button>
+              </div>
+            </div>`;
+        });
+        html += `<hr><div><strong>Total: Rp ${total.toLocaleString()}</strong></div>`;
+        html += `<button class="checkout-btn" onclick="checkout()">Checkout</button>`;
+        el.innerHTML = html;
+      }
+      el.style.display = 'block';
+    }
+
+    function updateQty(index, jumlahBaru) {
+      cart[index].jumlah = parseInt(jumlahBaru);
+      localStorage.setItem('keranjang', JSON.stringify(cart));
+      showCart();
+      updateCartCount();
+    }
+
+    function hapusItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('keranjang', JSON.stringify(cart));
+      showCart();
+      updateCartCount();
+    }
+
+    function checkout() {
+      alert("Terima kasih! Pesanan kamu diproses.");
+      cart = [];
+      localStorage.removeItem('keranjang');
+      document.getElementById("keranjang").innerHTML = "";
+      updateCartCount();
+    }
+
+    updateCartCount();
+
+    // Timer Flash Sale
+    const timerEl = document.getElementById("timer");
+    let countdown = 2 * 60 * 60;
+    const interval = setInterval(() => {
+      let h = Math.floor(countdown / 3600);
+      let m = Math.floor((countdown % 3600) / 60);
+      let s = countdown % 60;
+      timerEl.textContent = `Berakhir dalam: ${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+      countdown--;
+      if (countdown < 0) {
+        clearInterval(interval);
+        timerEl.textContent = "Flash Sale telah berakhir!";
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>

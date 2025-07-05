@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fceabb, #f8b500);
+      padding: 20px;
+      margin: 0;
+    }
+
+    h2, h3 {
+      color: #4e342e;
+      text-align: center;
+    }
+
+    .kontak-info, .kontak-form {
+      background: #fffde7;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      margin: 20px auto;
+      max-width: 600px;
+    }
+
+    .kontak-info p {
+      font-size: 16px;
+      margin: 12px 0;
+      color: #5d4037;
+    }
+
+    .kontak-info p::before {
+      content: "📌 ";
+    }
+
+    form label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+      color: #6d4c41;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0 15px 0;
+      border: 2px solid #ffecb3;
+      border-radius: 10px;
+      font-size: 14px;
+      background-color: #fffde7;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #fbc02d;
+      outline: none;
+    }
+
+    button {
+      background-color: #f57f17;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ef6c00;
+    }
+  </style>
+</head>
+<body class="konten">
+  <h2>📞 Kontak Kami</h2>
+
+  <div class="kontak-info">
+    <p><strong>📧 Email:</strong> info@esemmart.com</p>
+    <p><strong>📱 Telepon:</strong> 0812-3456-7890</p>
+    <p><strong>🏠 Alamat:</strong> Jl. Dilarang Ngutang RT 02 RW 05, Jakarta</p>
+  </div>
+
+  <div class="kontak-form">
+    <h3>📝 Formulir Pesan</h3>
+    <form>
+      <label>Nama:</label>
+      <input type="text" name="nama" placeholder="Nama Anda" required>
+      
+      <label>Email:</label>
+      <input type="email" name="email" placeholder="Email Anda" required>
+
+      <label>Pesan:</label>
+      <textarea name="pesan" rows="4" placeholder="Tulis pesan Anda di sini..." required></textarea>
+
+      <button type="submit">Kirim Pesan</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daftar Akun Baru</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #fff3e0, #ffe0b2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ef6c00;
+      margin-bottom: 25px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 18px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 40px 12px 38px;
+      border: 1px solid #ffe0b2;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .input-group input:focus {
+      border-color: #ff9800;
+      outline: none;
+      box-shadow: 0 0 5px rgba(255,152,0,0.3);
+    }
+
+    .icon {
+      position: absolute;
+      top: 11px;
+      left: 12px;
+      font-size: 18px;
+      color: #f57c00;
+    }
+
+    .toggle-password {
+      position: absolute;
+      top: 11px;
+      right: 12px;
+      cursor: pointer;
+      font-size: 18px;
+      color: #999;
+    }
+
+    button {
+      background-color: #f57c00;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e65100;
+    }
+
+    @media (max-height: 500px) {
+      html, body {
+        align-items: flex-start;
+        padding-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>✨ Daftar Akun Baru</h2>
+    <form>
+      <div class="input-group">
+        <span class="icon">👤</span>
+        <input type="text" placeholder="Nama Lengkap" required>
+      </div>
+      <div class="input-group">
+        <span class="icon">📧</span>
+        <input type="email" placeholder="Email" required>
+      </div>
+      <div class="input-group">
+        <span class="icon">🔒</span>
+        <input type="password" placeholder="Kata Sandi" id="password" required>
+        <span class="toggle-password" onclick="togglePassword()">👁️</span>
+      </div>
+      <button>Daftar</button>
+    </form>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const pwd = document.getElementById("password");
+      pwd.type = pwd.type === "password" ? "text" : "password";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Produk Unggulan</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff8e1;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #e65100;
+      margin-bottom: 20px;
+    }
+
+    #searchBar {
+      margin-bottom: 20px;
+      text-align: right;
+    }
+
+    #searchInput {
+      padding: 8px;
+      width: 200px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .produk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .produk-item {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .produk-item img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .produk-item h4 {
+      margin: 10px 0 5px;
+      font-size: 16px;
+    }
+
+    .produk-item p {
+      margin: 4px 0;
+      font-size: 14px;
+    }
+
+    .produk-item button {
+      margin-top: 8px;
+      padding: 6px 12px;
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .produk-item button:hover {
+      background-color: #e64a19;
+    }
+  </style>
+</head>
+<body>
+  <h2>Stok Aman, Overthinking Jangan! Gagal move on? Biarin. Yang penting sembako jangan sampai kosong.</h2>
+  <div id="searchBar">
+    <input type="text" id="searchInput" placeholder="Cari produk..." onkeyup="cariProduk()">
+  </div>
+  <div class="produk-grid" id="produkGrid">
+    <!-- Produk akan dimuat lewat JavaScript -->
+  </div>
+
+  <script>
+    const produkList = [
+      { nama: "Beras Basmati", harga: 455000, gambar: "img-Beras.jpg" },
+      { nama: "Minyak Goreng", harga: 249000, gambar: "img-Cannola-oil.jpg" },
+      { nama: "Gula Pasir ", harga: 100000, gambar: "img-Imperial-sugar.jpg" },
+      { nama: "Telur Ayam ", harga: 58000, gambar: "img-Happy-EggCo.jpg" },
+      { nama: "Mie Instan ", harga: 51000, gambar: "img-Sapporo-ichiban.jpg" },
+      { nama: "Garam", harga: 120000, gambar: "img-Maldon-salt.jpg" },
+      { nama: "Susu ", harga: 150000, gambar: "img-Anlene.jpg" },
+      { nama: "Daging", harga: 3421000, gambar: "img-tajima-wagyu.jpg" },
+      { nama: "Tepung Terigu", harga: 150000, gambar: "img-Robbin-hood.jpg" },
+      { nama: "Kecap", harga: 12000, gambar: "img-Kecap.jpg" },
+      { nama: "Saos", harga: 15000, gambar: "img-Saos.jpg" },
+      { nama: "Teh", harga: 20000, gambar: "img-teh.jpg" },
+    ];
+
+    function tampilkanProduk(filter = "") {
+      const grid = document.getElementById("produkGrid");
+      grid.innerHTML = "";
+
+      const filtered = produkList.filter(p => p.nama.toLowerCase().includes(filter.toLowerCase()));
+
+      filtered.forEach(item => {
+        const el = document.createElement("div");
+        el.className = "produk-item";
+        el.innerHTML = `
+          <img src="${item.gambar}" alt="${item.nama}">
+          <h4>${item.nama}</h4>
+          <p>Rp ${item.harga.toLocaleString()}</p>
+          <button onclick="addToCart('${item.nama}', ${item.harga})">+ Keranjang</button>
+        `;
+        grid.appendChild(el);
+      });
+    }
+
+    function cariProduk() {
+      const keyword = document.getElementById("searchInput").value;
+      tampilkanProduk(keyword);
+    }
+
+    function addToCart(nama, harga) {
+      let keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
+      const index = keranjang.findIndex(item => item.nama === nama);
+
+      if (index !== -1) {
+        keranjang[index].jumlah += 1;
+      } else {
+        keranjang.push({ nama, harga, jumlah: 1 });
+      }
+
+      localStorage.setItem('keranjang', JSON.stringify(keranjang));
+      alert(`${nama} ditambahkan ke keranjang.`);
+    }
+
+    // Tampilkan semua produk saat pertama dibuka
+    tampilkanProduk();
+  </script>
+</body>
+</html>
